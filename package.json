@@ -1,0 +1,21 @@
+{
+  "name": "mini-coding-agent-harness-series",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w packages/shared && npm run dev -w apps/mini-harness --",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run build -w packages/shared && npm run typecheck -w apps/mini-harness",
+    "lint": "npm run lint --workspaces"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
