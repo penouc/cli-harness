@@ -1,15 +1,17 @@
 # Mini Coding Agent Harness
 
-这是一个 14 天系列的文章和代码仓库，用 TypeScript/Node 从零实现一个 CLI 版 mini coding agent harness。目标不是复刻 Cursor、Codex 或 Claude Code 的完整产品，而是拆开它们共同的工程骨架：context、tools、agent loop、patch、approval、rules 和 context report。
+This repository hosts a 14-day writing and coding series about building a mini CLI coding agent harness from scratch with TypeScript and Node.js.
+
+The goal is not to clone Cursor, Codex, or Claude Code. The goal is to unpack the shared engineering skeleton behind these products: context, tools, agent loops, patching, approvals, rules, and execution logs.
 
 ## Daily Contract
 
-每天交付四件事：
+Each day should produce four deliverables:
 
-- 一篇文章草稿：`articles/day-xx-*.md`
-- 一个可运行代码增量：`apps/mini-harness`
-- 一个 demo 记录：`demos/day-xx/README.md`
-- 一个 progress log：`logs/daily/day-xx.md`
+- An article draft: `articles/day-xx-*.md`
+- A runnable code increment: `apps/mini-harness`
+- A demo note: `demos/day-xx/README.md`
+- A progress log: `logs/daily/day-xx.md`
 
 ## Quick Start
 
@@ -24,15 +26,19 @@ npm run dev -- --transcript logs/runs/day-02.jsonl "hello"
 ## Repository Map
 
 ```text
-articles/             14 天文章正文
-apps/mini-harness/    主示例 CLI harness
-packages/shared/      跨文章复用类型和工具
-docs/                 架构、术语、路线图和设计决策
-demos/                每天的命令、输出和截图记录
-logs/daily/           每天的进度记录
+articles/             14-day article drafts
+apps/mini-harness/    Main CLI harness example
+packages/shared/      Shared types and utilities
+docs/                 Architecture, glossary, roadmap, and decisions
+demos/                Daily commands, outputs, and demo notes
+logs/daily/           Daily progress logs
 ```
 
 ## Series Index
 
 See [articles/README.md](articles/README.md).
+
+## Chinese
+
+中文说明见 [docs/README.zh-CN.md](docs/README.zh-CN.md)。
 
