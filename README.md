@@ -38,7 +38,10 @@ logs/daily/           Daily progress logs
 
 See [articles/README.md](articles/README.md).
 
+## Plan
+
+See [docs/implementation-plan.md](docs/implementation-plan.md).
+
 ## Chinese
 
 中文说明见 [docs/README.zh-CN.md](docs/README.zh-CN.md)。
-

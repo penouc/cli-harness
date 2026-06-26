@@ -38,3 +38,6 @@ logs/daily/           每天的进度记录
 
 见 [articles/README.md](../articles/README.md)。
 
+## 实施计划
+
+见 [implementation-plan.md](implementation-plan.md)。
