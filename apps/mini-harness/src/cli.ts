@@ -82,8 +82,8 @@ Usage:
 }
 
 async function writeTranscript(path: string, value: unknown): Promise<void> {
-  const absolutePath = resolve(path);
+  const baseDirectory = process.env.INIT_CWD ?? process.cwd();
+  const absolutePath = resolve(baseDirectory, path);
   await mkdir(dirname(absolutePath), { recursive: true });
   await appendFile(absolutePath, `${JSON.stringify(value)}\n`, "utf8");
 }
-
