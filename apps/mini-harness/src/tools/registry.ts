@@ -1,8 +1,8 @@
-import type { ToolDefinition } from "@mini-harness/shared/types";
+import type { JsonSchema, ToolDefinition, ToolResult } from "@mini-harness/shared/types";
 
-type ToolHandler = (input: unknown) => Promise<unknown> | unknown;
+export type ToolHandler = (input: unknown) => Promise<unknown> | unknown;
 
-type RegisteredTool = ToolDefinition & {
+export type RegisteredTool = ToolDefinition & {
   handler: ToolHandler;
 };
 
@@ -10,6 +10,9 @@ export class ToolRegistry {
   private readonly tools = new Map<string, RegisteredTool>();
 
   register(tool: RegisteredTool): void {
+    if (this.tools.has(tool.name)) {
+      throw new Error(`Tool already registered: ${tool.name}`);
+    }
     this.tools.set(tool.name, tool);
   }
 
@@ -17,12 +20,22 @@ export class ToolRegistry {
     return [...this.tools.values()].map(({ handler: _handler, ...definition }) => definition);
   }
 
-  async dispatch(name: string, input: unknown): Promise<unknown> {
+  async dispatch(name: string, input: unknown): Promise<ToolResult> {
     const tool = this.tools.get(name);
     if (!tool) {
       throw new Error(`Unknown tool: ${name}`);
     }
-    return tool.handler(input);
+    validateInput(tool.inputSchema, input, name);
+
+    const startedAt = performance.now();
+    const output = await tool.handler(input);
+
+    return {
+      name,
+      input,
+      output,
+      durationMs: Math.round(performance.now() - startedAt),
+    };
   }
 }
 
@@ -43,4 +56,50 @@ export function createDefaultToolRegistry(): ToolRegistry {
   });
 
   return registry;
+}
+
+function validateInput(schema: JsonSchema, value: unknown, path: string): void {
+  if (schema.type === "object") {
+    if (!isRecord(value)) {
+      throw new Error(`Invalid input for ${path}: expected object`);
+    }
+
+    for (const key of schema.required ?? []) {
+      if (!(key in value)) {
+        throw new Error(`Invalid input for ${path}: missing required property "${key}"`);
+      }
+    }
+
+    for (const [key, childSchema] of Object.entries(schema.properties ?? {})) {
+      if (key in value) {
+        validateInput(childSchema, value[key], `${path}.${key}`);
+      }
+    }
+    return;
+  }
+
+  if (schema.type === "array") {
+    if (!Array.isArray(value)) {
+      throw new Error(`Invalid input for ${path}: expected array`);
+    }
+    if (schema.items) {
+      value.forEach((item, index) => validateInput(schema.items as JsonSchema, item, `${path}[${index}]`));
+    }
+    return;
+  }
+
+  if (schema.type === "null") {
+    if (value !== null) {
+      throw new Error(`Invalid input for ${path}: expected null`);
+    }
+    return;
+  }
+
+  if (typeof value !== schema.type) {
+    throw new Error(`Invalid input for ${path}: expected ${schema.type}`);
+  }
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }

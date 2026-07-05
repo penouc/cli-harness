@@ -1,0 +1,50 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Tool Registry Flow</title>
+  <desc id="desc">A diagram showing how tool schemas, the tool registry, handlers, validation, dispatch, and tool results connect in the mini agent harness.</desc>
+  <rect width="1200" height="720" rx="28" fill="#F7F4EA"/>
+  <rect x="48" y="48" width="1104" height="624" rx="24" fill="#FFFDF7" stroke="#2E2A24" stroke-width="2"/>
+
+  <text x="90" y="112" fill="#211F1B" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="34" font-weight="750">Day 04 - Tool Registry Flow</text>
+  <text x="90" y="148" fill="#5F5A50" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Separate what the model can see from what the runtime can execute.</text>
+
+  <rect x="90" y="210" width="250" height="232" rx="16" fill="#EAF2FF" stroke="#27496D" stroke-width="2"/>
+  <text x="122" y="254" fill="#19324F" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="23" font-weight="750">Model Context</text>
+  <text x="122" y="292" fill="#284862" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">tool name</text>
+  <text x="122" y="324" fill="#284862" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">description</text>
+  <text x="122" y="356" fill="#284862" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">input schema</text>
+  <rect x="122" y="382" width="170" height="34" rx="8" fill="#D4E6FF"/>
+  <text x="142" y="405" fill="#19324F" font-family="SFMono-Regular, ui-monospace, Menlo, Consolas, monospace" font-size="15">list()</text>
+
+  <rect x="475" y="198" width="250" height="256" rx="16" fill="#F5E7FF" stroke="#673B7C" stroke-width="2"/>
+  <text x="515" y="242" fill="#442052" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="23" font-weight="750">ToolRegistry</text>
+  <text x="515" y="282" fill="#5C3270" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">register(tool)</text>
+  <text x="515" y="314" fill="#5C3270" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">list definitions</text>
+  <text x="515" y="346" fill="#5C3270" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">validate input</text>
+  <text x="515" y="378" fill="#5C3270" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">dispatch handler</text>
+  <rect x="515" y="404" width="170" height="34" rx="8" fill="#E8CBF4"/>
+  <text x="535" y="427" fill="#442052" font-family="SFMono-Regular, ui-monospace, Menlo, Consolas, monospace" font-size="15">dispatch()</text>
+
+  <rect x="860" y="210" width="250" height="232" rx="16" fill="#EAF8EE" stroke="#2E6845" stroke-width="2"/>
+  <text x="892" y="254" fill="#214B32" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="23" font-weight="750">Runtime Tool</text>
+  <text x="892" y="292" fill="#315E43" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">handler(input)</text>
+  <text x="892" y="324" fill="#315E43" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">mock echo</text>
+  <text x="892" y="356" fill="#315E43" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">duration</text>
+  <rect x="892" y="382" width="170" height="34" rx="8" fill="#CFEFDA"/>
+  <text x="912" y="405" fill="#214B32" font-family="SFMono-Regular, ui-monospace, Menlo, Consolas, monospace" font-size="15">ToolResult</text>
+
+  <path d="M350 326H455" stroke="#2E2A24" stroke-width="3" stroke-linecap="round"/>
+  <path d="M444 314L458 326L444 338" stroke="#2E2A24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="370" y="304" fill="#5F5A50" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">schema</text>
+
+  <path d="M735 326H840" stroke="#2E2A24" stroke-width="3" stroke-linecap="round"/>
+  <path d="M829 314L843 326L829 338" stroke="#2E2A24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="760" y="304" fill="#5F5A50" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15">validated input</text>
+
+  <path d="M860 470C765 560 435 560 340 470" stroke="#A45C2B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M353 471L337 468L342 484" stroke="#A45C2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="503" y="548" fill="#7A421B" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16">structured result returns to transcript and context report</text>
+
+  <rect x="90" y="512" width="1020" height="88" rx="14" fill="#F3F0E7" stroke="#D2C8B5"/>
+  <text x="122" y="550" fill="#342F27" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="700">Day 04 boundary</text>
+  <text x="122" y="580" fill="#5F5A50" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16">The model sees definitions. The runtime owns handlers. The registry is the narrow bridge between them.</text>
+</svg>
